@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
+  get 'songs/new'
+
+  get 'songs/index'
+
+  get 'songs/upload'
+
+  get 'songs/delete'
+
   root 'static_pages#home'
 
   get 'static_pages/help'
 
   get 'static_pages/about'
+
+  resources :songs
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

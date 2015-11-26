@@ -1,1 +1,37 @@
 <% provide(:title, "Home") %>
+<div class="center jumbotron">
+  <h1>ChoreoMe</h1>
+
+  <h2>
+  <%= simple_form_for @song do |f| %>
+     <%= f.input :mp3 %>
+     <%= f.submit %>
+     <% end %>
+
+     <%- Song.all.each do |s| %>
+   <audio id="choreo" src="<%= s.mp3.url %>" controls autoplay loop> <p>Your browser does not support the <code>audio</code> element.</p> </audio>
+   <div>
+     <button type="button" class="btn btn-default glyphicon glyphicon-play" onclick="document.getElementById('choreo').play()"></button>
+     <button type="button" class="btn btn-default glyphicon glyphicon-pause" onclick="document.getElementById('choreo').pause()"></button>
+     <button type="button" class="btn btn-default glyphicon glyphicon-plus" onclick="document.getElementById('choreo').volume+=0.1"></button>
+     <button type="button" class="btn btn-default glyphicon glyphicon-minus" onclick="document.getElementById('choreo').volume-=0.1"></button>
+     <button type="button" class="btn btn-default" onclick="document.getElementById('choreo').playbackRate=0.75">.75x</button>
+     <button type="button" class="btn btn-default" onclick="document.getElementById('choreo').playbackRate=1">1x</button>
+     <button type="button" class="btn btn-default" onclick="document.getElementById('choreo').playbackRate=1.25">1.25x</button>
+     <button type="button" class="btn btn-default" onclick="document.getElementById('choreo').playbackRate=0.5">.5x </button>
+
+  <div class="row .text-center">
+   <div class="center-block">
+    <div class="col-lg-4 col-lg-offset-4">
+     <div class="input-group">
+       <span class="input-group-btn">
+         <button  onclick="document.getElementById('choreo').currentTime=x" class="btn btn-default" type="button">Start at X second</button>
+       </span>
+       <input type="text" class="form-control" placeholder="Enter the second!">
+     </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+  </div>
+    <br>
+    <br>
+     <% end %>
+  </h2>

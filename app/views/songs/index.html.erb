@@ -1,0 +1,17 @@
+<table class="table table-striped">
+   <thead>
+     <tr>
+       <th> Song Name</th>
+     </tr>
+   </thead>
+
+   <tbody>
+     <%- Song.all.each do |s| %>
+       <tr>
+         <td>
+          <%= link_to s.mp3_file_name, s.mp3.url %>
+         </td>
+       </tr>
+     <% end %>
+   </tbody>
+ </table>
