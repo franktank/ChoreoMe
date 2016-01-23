@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  mount Dashing::Engine, at: Dashing.config.engine_path
+
   devise_for :users
+
+
   get 'songs/new'
 
   get 'songs/index'
@@ -14,7 +18,15 @@ Rails.application.routes.draw do
 
   get 'static_pages/about'
 
+  get 'dashing/dashboards'
+
+  get 'dashboard' => 'dashing/dashboards'
+
   resources :songs
+
+
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
